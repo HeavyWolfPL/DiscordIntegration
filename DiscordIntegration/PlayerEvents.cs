@@ -109,6 +109,7 @@ namespace DiscordIntegration_Plugin
 				ProcessSTT.SendData($"{ev.Player.Nickname} - {ev.Player.UserId} {Plugin.Translation.GenEjected}.", HandleQueue.GameLogChannelId);
 		}
 		
+<<<<<<< HEAD
 		public void OnDoorInteract(InteractingDoorEventArgs ev)
 		{
 			if (Plugin.Singleton.Config.DoorInteract)
@@ -117,6 +118,17 @@ namespace DiscordIntegration_Plugin
 						: $"{ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.HasOpenedADoor}: {ev.Door.GetComponent<DoorNametagExtension>().GetName}.",
 					HandleQueue.GameLogChannelId);
 		}
+=======
+		//NetworkTargetState doesn't seem to work. Fix pls
+		//public void OnDoorInteract(InteractingDoorEventArgs ev)
+		//{
+		//	if (Plugin.Singleton.Config.DoorInteract)
+		//		ProcessSTT.SendData(ev.Door.NetworkTargetState
+		//				? $"{ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.HasClosedADoor}: {ev.Door.GetComponent<DoorNametagExtension>().GetName}."
+		//				: $"{ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.HasOpenedADoor}: {ev.Door.GetComponent<DoorNametagExtension>().GetName}.",
+		//			HandleQueue.GameLogChannelId);
+		//}
+>>>>>>> Add project files.
 
 		public void On914Activation(ActivatingEventArgs ev)
 		{
@@ -206,6 +218,12 @@ namespace DiscordIntegration_Plugin
 							HandleQueue.GameLogChannelId);
 					else if (!Plugin.Singleton.Config.OnlyFriendlyFire)
 					{
+<<<<<<< HEAD
+=======
+						ProcessSTT.SendData(
+							$":skull_crossbones: **{ev.Killer.Nickname} - {ev.Killer.UserId} ({ev.Killer.Role}) {Plugin.Translation.Killed} {ev.Target.Nickname} - {ev.Target.UserId} ({ev.Target.Role}) {Plugin.Translation.With} {DamageTypes.FromIndex(ev.HitInformation.Tool).name}.**",
+							HandleQueue.GameLogChannelId);
+>>>>>>> Add project files.
 						if (ev.Killer != null && ev.Killer != ev.Target && ev.Target.Role.GetTeam() == ev.Killer.Role.GetTeam() || ev.Killer.Role.GetSide() == ev.Target.Role.GetSide())
 						{
 							ProcessSTT.SendData($":o: **{ev.Killer.Nickname} - `{ev.Killer.UserId}` ({ev.Killer.Role}) {Plugin.Translation.Killed} {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation.With} {DamageTypes.FromIndex(ev.HitInformation.Tool).name}.**",
@@ -284,6 +302,7 @@ namespace DiscordIntegration_Plugin
 
 		public void OnPlayerBanned(BannedEventArgs ev)
 		{
+<<<<<<< HEAD
 			if (Plugin.Singleton.Config.ShowIpAddresses)
 			{
 				ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
@@ -299,6 +318,10 @@ namespace DiscordIntegration_Plugin
 					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
 				}
 			}
+=======
+			if (Plugin.Singleton.Config.Banned)
+				ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - {ev.Details.Id} {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+>>>>>>> Add project files.
 		}
 
 		public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
@@ -345,4 +368,8 @@ namespace DiscordIntegration_Plugin
 			}
 		}
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Add project files.

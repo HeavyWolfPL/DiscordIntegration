@@ -68,7 +68,11 @@ namespace DiscordIntegration_Plugin
             Handlers.Player.Hurting += PlayerEvents.OnPlayerHurt;
             Handlers.Player.Dying += PlayerEvents.OnPlayerDeath;
             Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
+<<<<<<< HEAD
             Handlers.Player.InteractingDoor += PlayerEvents.OnDoorInteract;
+=======
+            //Handlers.Player.InteractingDoor += PlayerEvents.OnDoorInteract;
+>>>>>>> Add project files.
             Handlers.Player.InteractingElevator += PlayerEvents.OnElevatorInteraction;
             Handlers.Player.InteractingLocker += PlayerEvents.OnLockerInteraction;
             Handlers.Player.IntercomSpeaking += PlayerEvents.OnIntercomSpeak;
@@ -130,7 +134,11 @@ namespace DiscordIntegration_Plugin
             Handlers.Player.Hurting -= PlayerEvents.OnPlayerHurt;
             Handlers.Player.Dying -= PlayerEvents.OnPlayerDeath;
             Handlers.Player.Banned -= PlayerEvents.OnPlayerBanned;
+<<<<<<< HEAD
             Handlers.Player.InteractingDoor -= PlayerEvents.OnDoorInteract;
+=======
+            //Handlers.Player.InteractingDoor -= PlayerEvents.OnDoorInteract;
+>>>>>>> Add project files.
             Handlers.Player.InteractingElevator -= PlayerEvents.OnElevatorInteraction;
             Handlers.Player.InteractingLocker -= PlayerEvents.OnLockerInteraction;
             Handlers.Player.IntercomSpeaking -= PlayerEvents.OnIntercomSpeak;
