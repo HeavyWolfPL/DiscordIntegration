@@ -14,6 +14,7 @@ namespace DiscordIntegration_Bot
 		public ulong Permlevel4Id { get; set; }
 		public ulong CommandLogChannelId { get; set; }
 		public ulong GameLogChannelId { get; set; }
+		public ulong PunishmentsLogChannelId { get; set; }
 		public Dictionary<string, PermLevel> AllowedCommands { get; set; }
 		public ulong StaffRoleId { get; set; }
 		public bool EggMode { get; set; }
@@ -31,6 +32,7 @@ namespace DiscordIntegration_Bot
 			Permlevel4Id = 0,
 			CommandLogChannelId = 0,
 			GameLogChannelId = 0,
+			PunishmentsLogChannelId = 0,
 			AllowedCommands = new Dictionary<string, PermLevel>() { {"list", PermLevel.PermLevel0} },
 			StaffRoleId = 0,
 			EggMode = false,

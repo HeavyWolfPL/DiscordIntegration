@@ -23,6 +23,7 @@ namespace DiscordIntegration_Bot
 		private static ConcurrentDictionary<int, int> heartbeats = new ConcurrentDictionary<int, int>();
 		public static ulong GameChannelId;
 		public static ulong CmdChannelId;
+		public static ulong PunishmentsChannelId;
 		private static Dictionary<ulong, string> _messages = new Dictionary<ulong, string>();
 
 		public static void SendData(string data, int port, string name, ulong channel = 0)
@@ -75,6 +76,7 @@ namespace DiscordIntegration_Bot
 			Program.Log($"STT started for {Program.Config.Port}");
 			GameChannelId = Program.Config.GameLogChannelId;
 			CmdChannelId = Program.Config.CommandLogChannelId;
+			PunishmentsChannelId = Program.Config.PunishmentsLogChannelId;
 			Program.Log("STT: Adding listener to list", true);
 			listener.Add(list);
 			Program.Log("STT: Starting listener.");
