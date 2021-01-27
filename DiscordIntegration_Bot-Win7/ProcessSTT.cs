@@ -149,7 +149,7 @@ namespace DiscordIntegration_Bot
 				Program.Log($"Receiving data: {data.Data} Channel: {data.Channel} for {data.Port}", true);
 				if (data.Data.Contains("REQUEST_DATA PLAYER_LIST SILENT"))
 					return;
-				SocketGuild guild = Bot.Client.Guilds.FirstOrDefault(g => g.Id == Program.Config.GuildId);
+				SocketGuild guild = Bot.Client.Guilds.FirstOrDefault();
 
 				if (data.Data.StartsWith("checksync"))
 				{
@@ -208,17 +208,15 @@ namespace DiscordIntegration_Bot
 
 					return;
 				}
-				
+
 				if (data.Data.StartsWith("channelstatus"))
 				{
-					/*  -- Disabled due to Discord.NET bug.
 					Program.Log($"updating channel topic", true);
 					string status = data.Data.Replace("channelstatus", "");
 					SocketTextChannel chan1 = guild.GetTextChannel(GameChannelId);
 					await chan1.ModifyAsync(x => x.Topic = status);
 					SocketTextChannel chan2 = guild.GetTextChannel(CmdChannelId);
 					await chan2.ModifyAsync(x => x.Topic = status);
-					*/
 
 					return;
 				}
@@ -234,8 +232,8 @@ namespace DiscordIntegration_Bot
 					await Bot.Client.SetActivityAsync(new Game(status));
 					return;
 				}
-				//data.Data = data.Data.Substring(data.Data.IndexOf('#') + 1);
-				//Disabled to fix broken names, if it includes a #
+				data.Data = data.Data.Substring(data.Data.IndexOf('#') + 1);
+
 				
 				
 				Console.WriteLine("Getting guild.");
@@ -267,12 +265,12 @@ namespace DiscordIntegration_Bot
 					{
 						if (!_messages.ContainsKey(chan.Id))
 							_messages.Add(chan.Id, string.Empty);
-						_messages[chan.Id] += $"[{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}] {data.Data} {Environment.NewLine}".Replace("<", "<​").Replace("@everyone", "@​everyone").Replace("@here", "@​here");
+						_messages[chan.Id] += $"[{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}] {data.Data} {Environment.NewLine}";
 					}
 					return;
 				}
 				Console.WriteLine("Sending message.");
-				await chan.SendMessageAsync($"[{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}] {data.Data}".Replace("<", "<​").Replace("@everyone", "@​everyone").Replace("@here", "@​here"));
+				await chan.SendMessageAsync($"[{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}] {data.Data}");
 				
 			}
 			catch (Exception e)
