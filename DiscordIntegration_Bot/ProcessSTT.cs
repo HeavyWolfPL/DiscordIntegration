@@ -202,6 +202,8 @@ namespace DiscordIntegration_Bot
 						SendData("set gameid", data.Port, "bot", GameChannelId);
 						Program.Log($"CommandChannelID: {CmdChannelId}", true);
 						SendData("set cmdid", data.Port, "bot", CmdChannelId);
+						Program.Log($"PunishmentsChannelID: {PunishmentsChannelId}", true);
+						SendData("set bansid", data.Port, "bot", CmdChannelId);
 					}
 					catch (Exception e)
 					{
@@ -253,6 +255,8 @@ namespace DiscordIntegration_Bot
 					chan = guild.GetTextChannel(GameChannelId);
 				else if (data.Channel == 2)
 					chan = guild.GetTextChannel(CmdChannelId);
+				else if (data.Channel == 3)
+					chan = guild.GetTextChannel(PunishmentsChannelId);
 				else
 					chan = guild.GetTextChannel(data.Channel);
 				

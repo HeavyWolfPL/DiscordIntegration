@@ -41,7 +41,7 @@ namespace DiscordIntegration_Plugin
 					return;
 				}
 
-				if (result.Data == "set cmdid")
+				if (result.Data == "set bansid")
 				{
 					PunishmentsLogChannelId = result.Channel;
 					Log.Debug($"STT: PunishmentsLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
