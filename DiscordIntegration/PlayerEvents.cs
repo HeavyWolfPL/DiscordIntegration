@@ -255,7 +255,7 @@ namespace DiscordIntegration_Plugin
 			}
 		}
 
-		public void OnPlayerJoin(JoinedEventArgs ev)
+		public void OnPlayerVerified(VerifiedEventArgs ev)
 		{
 			if (Plugin.Singleton.Config.RoleSync)
 				Methods.CheckForSyncRole(ev.Player);
@@ -282,27 +282,28 @@ namespace DiscordIntegration_Plugin
 						HandleQueue.GameLogChannelId);
 		}
 
-		public void OnPlayerBanned(BannedEventArgs ev)
-		{
-			if (Plugin.Singleton.Config.ShowIpAddresses)
-			{
-				ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+        public void OnPlayerBanned(BannedEventArgs ev)
+        {
+            if (Plugin.Singleton.Config.ShowIpAddresses)
+            {
+                ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+				ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. **Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n**Czas:** `{ new DateTime(ev.Details.Expires)}` \n**Powód:** `{ ev.Details.Reason}` \n**Administrator:** { ev.Details.Issuer}", HandleQueue.PunishmentsLogChannelId);
 			}
-			else
-			{
-				if (ev.Details.Id.ToString().Contains("."))
-				{
-					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `IP Hidden` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+            else
+            {
+                if (ev.Details.Id.ToString().Contains("."))
+                {
+                    ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `IP Hidden` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+                }
+                else
+                {
+                    ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+					ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n**Czas:** `{ new DateTime(ev.Details.Expires)}` \n**Powód:** `{ ev.Details.Reason}` \n**Administrator:** { ev.Details.Issuer}", HandleQueue.PunishmentsLogChannelId);
 				}
-				else
-				{
-					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.PunishmentsLogChannelId);
-				}
-			}
-		}
+            }
+        }
 
-		public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
+        public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
 		{
 			if (Plugin.Singleton.Config.Intercom)
 				ProcessSTT.SendData($":loud_sound: {ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.HasStartedUsingTheIntercom}.", HandleQueue.GameLogChannelId);
