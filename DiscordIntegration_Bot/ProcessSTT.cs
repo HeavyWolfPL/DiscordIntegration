@@ -266,7 +266,7 @@ namespace DiscordIntegration_Bot
 					return;
 				}
 
-				if (chan.Id == Program.Config.GameLogChannelId || chan.Id == Program.Config.CommandLogChannelId)
+				if (chan.Id == Program.Config.GameLogChannelId || chan.Id == Program.Config.CommandLogChannelId || chan.Id == Program.Config.PunishmentsLogChannelId)
 				{
 					Program.Log("Storing message.", true);
 					lock (_messages)
