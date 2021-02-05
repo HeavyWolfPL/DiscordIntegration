@@ -63,7 +63,6 @@ namespace DiscordIntegration_Plugin
         
         [Description("The IP address to connect to the bot, if EggMode is enabled.")]
         public string EggAddress { get; set; } = "";
-
         
         [Description("Only log friendly fire kills.")]
         public bool OnlyFriendlyFire { get; set; } = false;
@@ -72,23 +71,8 @@ namespace DiscordIntegration_Plugin
         
         [Description("Wether or not the plugin should try adn set player's roles when they join based on the Discord Bot's discord sync feature.")]
         public bool RoleSync { get; set; } = false;
-
-
-        [Description("Only log friendly fire kills.")]
-        public bool OnlyFriendlyFire { get; set; } = false;
-
-        [Description("Only log friendly fire damage?")]
-        public bool OnlyFriendlyFireDMG { get; set; } = true;
-
-        [Description("Wether or not the plugin should try adn set player's roles when they join based on the Discord Bot's discord sync feature.")]
-        public bool RoleSync { get; set; } = true;
-
         
         [Description("Wether or not the plugin is enabled.")]
         public bool IsEnabled { get; set; } = true;
     }
-
 }
-
-}
-
