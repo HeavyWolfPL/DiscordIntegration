@@ -23,10 +23,7 @@ namespace DiscordIntegration_Bot
 		private static ConcurrentDictionary<int, int> heartbeats = new ConcurrentDictionary<int, int>();
 		public static ulong GameChannelId;
 		public static ulong CmdChannelId;
-<<<<<<< HEAD
-=======
 		public static ulong PunishmentsChannelId;
->>>>>>> Add project files.
 		private static Dictionary<ulong, string> _messages = new Dictionary<ulong, string>();
 
 		public static void SendData(string data, int port, string name, ulong channel = 0)
@@ -79,10 +76,7 @@ namespace DiscordIntegration_Bot
 			Program.Log($"STT started for {Program.Config.Port}");
 			GameChannelId = Program.Config.GameLogChannelId;
 			CmdChannelId = Program.Config.CommandLogChannelId;
-<<<<<<< HEAD
-=======
 			PunishmentsChannelId = Program.Config.PunishmentsLogChannelId;
->>>>>>> Add project files.
 			Program.Log("STT: Adding listener to list", true);
 			listener.Add(list);
 			Program.Log("STT: Starting listener.");
@@ -208,6 +202,8 @@ namespace DiscordIntegration_Bot
 						SendData("set gameid", data.Port, "bot", GameChannelId);
 						Program.Log($"CommandChannelID: {CmdChannelId}", true);
 						SendData("set cmdid", data.Port, "bot", CmdChannelId);
+						Program.Log($"PunishmentsChannelID: {PunishmentsChannelId}", true);
+						SendData("set bansid", data.Port, "bot", CmdChannelId);
 					}
 					catch (Exception e)
 					{
@@ -243,16 +239,9 @@ namespace DiscordIntegration_Bot
 					return;
 				}
 				//data.Data = data.Data.Substring(data.Data.IndexOf('#') + 1);
-<<<<<<< HEAD
 				//Disabled to fix broken names, if it includes a #
 				
 				
-=======
-				//Disabled to fix discord names
-
-
-
->>>>>>> Add project files.
 				Console.WriteLine("Getting guild.");
 				Console.WriteLine("Getting channel");
 				if (guild == null)
@@ -266,6 +255,8 @@ namespace DiscordIntegration_Bot
 					chan = guild.GetTextChannel(GameChannelId);
 				else if (data.Channel == 2)
 					chan = guild.GetTextChannel(CmdChannelId);
+				else if (data.Channel == 3)
+					chan = guild.GetTextChannel(PunishmentsChannelId);
 				else
 					chan = guild.GetTextChannel(data.Channel);
 				
@@ -275,11 +266,7 @@ namespace DiscordIntegration_Bot
 					return;
 				}
 
-<<<<<<< HEAD
-				if (chan.Id == Program.Config.GameLogChannelId || chan.Id == Program.Config.CommandLogChannelId)
-=======
 				if (chan.Id == Program.Config.GameLogChannelId || chan.Id == Program.Config.CommandLogChannelId || chan.Id == Program.Config.PunishmentsLogChannelId)
->>>>>>> Add project files.
 				{
 					Program.Log("Storing message.", true);
 					lock (_messages)
@@ -368,8 +355,4 @@ namespace DiscordIntegration_Bot
 			}
 		}
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> Add project files.

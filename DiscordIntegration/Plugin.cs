@@ -22,8 +22,8 @@ namespace DiscordIntegration_Plugin
 		public static Plugin Singleton;
 		public int MaxPlayers = ConfigFile.ServerConfig.GetInt("max_players", 20);
 		public override string Author { get; } = "Galaxy119, Jeppe & DGVagabond";
-		public override Version Version { get; } = new Version(2, 2, 0);
-		public override Version RequiredExiledVersion { get; } = new Version(2, 1, 23);
+		public override Version Version { get; } = new Version(2, 3, 0);
+		public override Version RequiredExiledVersion { get; } = new Version(2, 1, 29);
 
 		public override void OnEnabled()
 		{
@@ -68,11 +68,7 @@ namespace DiscordIntegration_Plugin
             Handlers.Player.Hurting += PlayerEvents.OnPlayerHurt;
             Handlers.Player.Dying += PlayerEvents.OnPlayerDeath;
             Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
-<<<<<<< HEAD
-            Handlers.Player.InteractingDoor += PlayerEvents.OnDoorInteract;
-=======
             //Handlers.Player.InteractingDoor += PlayerEvents.OnDoorInteract;
->>>>>>> Add project files.
             Handlers.Player.InteractingElevator += PlayerEvents.OnElevatorInteraction;
             Handlers.Player.InteractingLocker += PlayerEvents.OnLockerInteraction;
             Handlers.Player.IntercomSpeaking += PlayerEvents.OnIntercomSpeak;
@@ -81,7 +77,7 @@ namespace DiscordIntegration_Plugin
             Handlers.Scp106.Teleporting += PlayerEvents.On106Teleport;
             Handlers.Player.ReloadingWeapon += PlayerEvents.OnPlayerReload;
             Handlers.Player.ItemDropped += PlayerEvents.OnDropItem;
-            Handlers.Player.Joined += PlayerEvents.OnPlayerJoin;
+            Handlers.Player.Verified += PlayerEvents.OnPlayerVerified;
             Handlers.Player.Left += PlayerEvents.OnPlayerLeave;
             Handlers.Player.ChangingRole += PlayerEvents.OnSetClass;
             Handlers.Player.ChangingGroup += PlayerEvents.OnSetGroup;
@@ -134,11 +130,7 @@ namespace DiscordIntegration_Plugin
             Handlers.Player.Hurting -= PlayerEvents.OnPlayerHurt;
             Handlers.Player.Dying -= PlayerEvents.OnPlayerDeath;
             Handlers.Player.Banned -= PlayerEvents.OnPlayerBanned;
-<<<<<<< HEAD
-            Handlers.Player.InteractingDoor -= PlayerEvents.OnDoorInteract;
-=======
             //Handlers.Player.InteractingDoor -= PlayerEvents.OnDoorInteract;
->>>>>>> Add project files.
             Handlers.Player.InteractingElevator -= PlayerEvents.OnElevatorInteraction;
             Handlers.Player.InteractingLocker -= PlayerEvents.OnLockerInteraction;
             Handlers.Player.IntercomSpeaking -= PlayerEvents.OnIntercomSpeak;
@@ -147,8 +139,8 @@ namespace DiscordIntegration_Plugin
             Handlers.Scp106.Teleporting -= PlayerEvents.On106Teleport;
             Handlers.Player.ReloadingWeapon -= PlayerEvents.OnPlayerReload;
             Handlers.Player.ItemDropped -= PlayerEvents.OnDropItem;
-            Handlers.Player.Joined -= PlayerEvents.OnPlayerJoin;
-            Handlers.Player.Left -= PlayerEvents.OnPlayerLeave;
+			Handlers.Player.Verified += PlayerEvents.OnPlayerVerified;
+			Handlers.Player.Left -= PlayerEvents.OnPlayerLeave;
             Handlers.Player.ChangingRole -= PlayerEvents.OnSetClass;
             Handlers.Player.ChangingGroup -= PlayerEvents.OnSetGroup;
             Handlers.Player.ChangingItem -= PlayerEvents.OnItemChanged;

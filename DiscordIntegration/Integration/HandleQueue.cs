@@ -10,6 +10,7 @@ namespace DiscordIntegration_Plugin
 		public static ulong ChannelId;
 		public static ulong GameLogChannelId = 1;
 		public static ulong CommandLogChannelId = 2;
+		public static ulong PunishmentsLogChannelId = 3;
 		
 		public static void HandleQueuedItems()
 		{
@@ -37,6 +38,13 @@ namespace DiscordIntegration_Plugin
 				{
 					CommandLogChannelId = result.Channel;
 					Log.Debug($"STT: CommandLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
+					return;
+				}
+
+				if (result.Data == "set bansid")
+				{
+					PunishmentsLogChannelId = result.Channel;
+					Log.Debug($"STT: PunishmentsLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
 					return;
 				}
 

@@ -14,10 +14,7 @@ namespace DiscordIntegration_Bot
 		public ulong Permlevel4Id { get; set; }
 		public ulong CommandLogChannelId { get; set; }
 		public ulong GameLogChannelId { get; set; }
-<<<<<<< HEAD
-=======
 		public ulong PunishmentsLogChannelId { get; set; }
->>>>>>> Add project files.
 		public Dictionary<string, PermLevel> AllowedCommands { get; set; }
 		public ulong StaffRoleId { get; set; }
 		public bool EggMode { get; set; }
@@ -35,10 +32,7 @@ namespace DiscordIntegration_Bot
 			Permlevel4Id = 0,
 			CommandLogChannelId = 0,
 			GameLogChannelId = 0,
-<<<<<<< HEAD
-=======
 			PunishmentsLogChannelId = 0,
->>>>>>> Add project files.
 			AllowedCommands = new Dictionary<string, PermLevel>() { {"list", PermLevel.PermLevel0} },
 			StaffRoleId = 0,
 			EggMode = false,
