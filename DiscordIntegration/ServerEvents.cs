@@ -14,7 +14,7 @@ namespace DiscordIntegration_Plugin
         {
             string Args = string.Join(" ", ev.Arguments);
             if (Plugin.Singleton.Config.RaCommands)
-                ProcessSTT.SendData($":keyboard: ({ev.Sender.Id}) {ev.Sender.Nickname} ({ev.Sender.UserId}) {Plugin.Translation.UsedCommand}: {ev.Name} {Args}", HandleQueue.CommandLogChannelId);
+                ProcessSTT.SendData($":keyboard: ({ev.Sender.Id}) {ev.Sender.Nickname} ({ev.Sender.UserId} - {ev.Sender.Role}) {Plugin.Translation.UsedCommand}: {ev.Name} {Args}", HandleQueue.CommandLogChannelId);
             if (ev.Name.ToLower() == "list")
             {
                 Log.Info("Fetching players...");
