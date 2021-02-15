@@ -231,7 +231,7 @@ namespace DiscordIntegration_Plugin
 			{
 				if (ev.Player == null)
 					return;
-				ProcessSTT.SendData($":bomb: ({ev.Player.Id}) {ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.ThrewAGrenade}.", HandleQueue.GameLogChannelId);
+				ProcessSTT.SendData($":bomb: ({ev.Player.Id}) {ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.ThrewAGrenade} **{ev.Type}**.", HandleQueue.GameLogChannelId);
 			}
 		}
 
