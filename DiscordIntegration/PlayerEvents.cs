@@ -61,7 +61,7 @@ namespace DiscordIntegration_Plugin
 				ProcessSTT.SendData($"({ev.Player.Id}) {ev.Player.Nickname} - {ev.Player.UserId} {Plugin.Translation.GainedLevel} {ev.OldLevel} -> {ev.NewLevel}.", HandleQueue.GameLogChannelId);
 		}
 
-		public void OnPlayerLeave(LeftEventArgs ev)
+		public void OnPlayerDestroyed(DestroyingEventArgs ev)
 		{
 			if (Plugin.Singleton.Config.PlayerLeave)
 				ProcessSTT.SendData($":arrow_left: **{ev.Player.Nickname} - {ev.Player.UserId} {Plugin.Translation.LeftServer}.**", HandleQueue.GameLogChannelId);

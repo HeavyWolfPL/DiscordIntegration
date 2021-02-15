@@ -14,7 +14,7 @@ namespace DiscordIntegration_Plugin
         {
             string Args = string.Join(" ", ev.Arguments);
             if (Plugin.Singleton.Config.RaCommands)
-                ProcessSTT.SendData($":keyboard: {ev.Sender.Nickname}({ev.Sender.UserId}) {Plugin.Translation.UsedCommand}: {ev.Name} {Args}", HandleQueue.CommandLogChannelId);
+                ProcessSTT.SendData($":keyboard: ({ev.Sender.Id}) {ev.Sender.Nickname} ({ev.Sender.UserId}) {Plugin.Translation.UsedCommand}: {ev.Name} {Args}", HandleQueue.CommandLogChannelId);
             if (ev.Name.ToLower() == "list")
             {
                 Log.Info("Fetching players...");
@@ -77,7 +77,7 @@ namespace DiscordIntegration_Plugin
         {
             string Argies = string.Join(" ", ev.Arguments);
             if (Plugin.Singleton.Config.ConsoleCommand)
-                ProcessSTT.SendData($"{ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.HasRunClientConsoleCommand}: {ev.Name} {Argies}", HandleQueue.CommandLogChannelId);
+                ProcessSTT.SendData($"({ev.Player.Id}) {ev.Player.Nickname} ({ev.Player.UserId}) ({ev.Player.Role}) {Plugin.Translation.HasRunClientConsoleCommand}: {ev.Name} {Argies}", HandleQueue.CommandLogChannelId);
         }
         
         public void OnRespawn(RespawningTeamEventArgs ev)
