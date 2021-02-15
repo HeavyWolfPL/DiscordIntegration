@@ -11,7 +11,7 @@ namespace DiscordIntegration_Plugin
         public void OnWarheadDetonation()
         {
             if (Plugin.Singleton.Config.WarheadDetonate)
-                ProcessSTT.SendData($":radioactive: **{Plugin.Translation.WarheadDetonated}.**", HandleQueue.GameLogChannelId);
+                ProcessSTT.SendData($":radioactive: {Plugin.Translation.WarheadDetonated}.", HandleQueue.GameLogChannelId);
         }
 
 
@@ -24,7 +24,7 @@ namespace DiscordIntegration_Plugin
         public void OnDecon(DecontaminatingEventArgs ev)
         {
             if (Plugin.Singleton.Config.Decon)
-                ProcessSTT.SendData($":biohazard: **{Plugin.Translation.DecontaminationHasBegun}.**", HandleQueue.GameLogChannelId);
+                ProcessSTT.SendData($":biohazard: **{Plugin.Translation.DecontaminationHasBegun}**", HandleQueue.GameLogChannelId);
         }
         
         public void OnWarheadStart(StartingEventArgs ev)
