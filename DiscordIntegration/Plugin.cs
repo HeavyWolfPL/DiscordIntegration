@@ -47,8 +47,12 @@ namespace DiscordIntegration_Plugin
             Handlers.Server.RoundEnded += ServerEvents.OnRoundEnd;
             Handlers.Server.RespawningTeam += ServerEvents.OnRespawn;
             Handlers.Server.ReportingCheater += ServerEvents.OnCheaterReport;
+			
+			
+			Handlers.Player.Banning += PlayerEvents.OnBanning;
+			Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
 
-            Handlers.Scp914.ChangingKnobSetting += PlayerEvents.On914KnobChange;
+			Handlers.Scp914.ChangingKnobSetting += PlayerEvents.On914KnobChange;
             Handlers.Player.MedicalItemUsed += PlayerEvents.OnMedicalItem;
             Handlers.Scp079.InteractingTesla += PlayerEvents.On079Tesla;
             Handlers.Player.PickingUpItem += PlayerEvents.OnPickupItem;
@@ -67,7 +71,6 @@ namespace DiscordIntegration_Plugin
             Handlers.Player.ThrowingGrenade += PlayerEvents.OnGrenadeThrown;
             Handlers.Player.Hurting += PlayerEvents.OnPlayerHurt;
             Handlers.Player.Dying += PlayerEvents.OnPlayerDeath;
-            Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
             //Handlers.Player.InteractingDoor += PlayerEvents.OnDoorInteract;
             Handlers.Player.InteractingElevator += PlayerEvents.OnElevatorInteraction;
             Handlers.Player.InteractingLocker += PlayerEvents.OnLockerInteraction;
@@ -110,7 +113,10 @@ namespace DiscordIntegration_Plugin
             Handlers.Server.RespawningTeam -= ServerEvents.OnRespawn;
             Handlers.Server.ReportingCheater -= ServerEvents.OnCheaterReport;
 
-            Handlers.Scp914.ChangingKnobSetting -= PlayerEvents.On914KnobChange;
+			Handlers.Player.Banning += PlayerEvents.OnBanning;
+			Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
+
+			Handlers.Scp914.ChangingKnobSetting -= PlayerEvents.On914KnobChange;
             Handlers.Player.UsingMedicalItem -= PlayerEvents.OnMedicalItem;
             Handlers.Scp079.InteractingTesla -= PlayerEvents.On079Tesla;
             Handlers.Player.PickingUpItem -= PlayerEvents.OnPickupItem;
@@ -129,7 +135,6 @@ namespace DiscordIntegration_Plugin
             Handlers.Player.ThrowingGrenade -= PlayerEvents.OnGrenadeThrown;
             Handlers.Player.Hurting -= PlayerEvents.OnPlayerHurt;
             Handlers.Player.Dying -= PlayerEvents.OnPlayerDeath;
-            Handlers.Player.Banned -= PlayerEvents.OnPlayerBanned;
             //Handlers.Player.InteractingDoor -= PlayerEvents.OnDoorInteract;
             Handlers.Player.InteractingElevator -= PlayerEvents.OnElevatorInteraction;
             Handlers.Player.InteractingLocker -= PlayerEvents.OnLockerInteraction;

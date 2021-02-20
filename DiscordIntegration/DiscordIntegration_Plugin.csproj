@@ -111,6 +111,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="Integration\HandleQueue.cs" />
     <Compile Include="Integration\ProcessSTT.cs" />
+    <Compile Include="Integration\TimeFormat.cs" />
     <Compile Include="MapEvents.cs" />
     <Compile Include="Methods.cs" />
     <Compile Include="PlayerEvents.cs" />

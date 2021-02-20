@@ -4,6 +4,7 @@ using Exiled.API.Features;
 using Exiled.Events.EventArgs;
 using Interactables.Interobjects.DoorUtils;
 using Scp914;
+using TimeFormatter = DiscordIntegration_Plugin.Integration.TimeFormat;
 
 namespace DiscordIntegration_Plugin
 {
@@ -282,28 +283,35 @@ namespace DiscordIntegration_Plugin
 						HandleQueue.GameLogChannelId);
 		}
 
-        public void OnPlayerBanned(BannedEventArgs ev)
+		public void OnPlayerBanned(BannedEventArgs ev)
         {
-            if (Plugin.Singleton.Config.ShowIpAddresses)
-            {
-                ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-				ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. **Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n**Czas:** `{ new DateTime(ev.Details.Expires)}` \n**Powód:** `{ ev.Details.Reason}` \n**Administrator:** { ev.Details.Issuer}", HandleQueue.PunishmentsLogChannelId);
-			}
-            else
-            {
-                if (ev.Details.Id.ToString().Contains("."))
+            if (ev.Details.Id.ToString().Contains("."))
+                if (!Plugin.Singleton.Config.ShowIpAddresses)
                 {
-                    ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `IP Hidden` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `IP Hidden` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
                 }
                 else
                 {
-                    ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-					ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n**Czas:** `{ new DateTime(ev.Details.Expires)}` \n**Powód:** `{ ev.Details.Reason}` \n**Administrator:** { ev.Details.Issuer}", HandleQueue.PunishmentsLogChannelId);
-				}
-            }
-        }
+					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+                }
+			else
+            {
+				ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+				//ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n**Czas:** `{ new DateTime(ev.Details.Expires)}` \n**Powód:** `{ ev.Details.Reason}` \n**Administrator:** { ev.Details.Issuer}", HandleQueue.PunishmentsLogChannelId);
+			}
+		}
 
-        public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
+		public void OnBanning (BanningEventArgs ev)
+		{
+			if (ev.Target.Id.ToString().Contains(".")) return;
+			
+			else
+            {
+				ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ev.Target.Nickname}` // || `{ev.Target.Id}` || \n**Czas:** `{TimeFormatter.TimeFormatter(ev.Duration)} - {new DateTime(banexpirationdate)}` \n**Powód:** `{ev.Reason}` \n**Administrator:** {ev.Issuer.Nickname}", HandleQueue.PunishmentsLogChannelId);
+			}
+		}
+
+		public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
 		{
 			if (Plugin.Singleton.Config.Intercom)
 				ProcessSTT.SendData($":loud_sound: ({ev.Player.Id}) {ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.HasStartedUsingTheIntercom}.", HandleQueue.GameLogChannelId);

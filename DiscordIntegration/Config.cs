@@ -71,7 +71,7 @@ namespace DiscordIntegration_Plugin
         
         [Description("Wether or not the plugin should try adn set player's roles when they join based on the Discord Bot's discord sync feature.")]
         public bool RoleSync { get; set; } = false;
-        
+
         [Description("Wether or not the plugin is enabled.")]
         public bool IsEnabled { get; set; } = true;
     }
