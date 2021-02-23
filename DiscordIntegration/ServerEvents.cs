@@ -70,7 +70,7 @@ namespace DiscordIntegration_Plugin
         public void OnCheaterReport(ReportingCheaterEventArgs ev)
         {
             if (Plugin.Singleton.Config.CheaterReport)
-                ProcessSTT.SendData($"**{Plugin.Translation.CheaterReportFiled}: {ev.Reporter.UserId} {Plugin.Translation.Reported} {ev.Reported.UserId} {Plugin.Translation._For} {ev.Reason}.**", HandleQueue.GameLogChannelId);
+                ProcessSTT.SendData($":exclamation: :exclamation: :exclamation: :exclamation: :exclamation: \n**{Plugin.Translation.CheaterReportFiled}: {ev.Reporter.UserId} {Plugin.Translation.Reported} {ev.Reported.UserId} {Plugin.Translation._For} {ev.Reason}.** \n:exclamation: :exclamation: :exclamation: :exclamation: :exclamation: ", HandleQueue.GameLogChannelId);
         }
         
         public void OnConsoleCommand(SendingConsoleCommandEventArgs ev)
