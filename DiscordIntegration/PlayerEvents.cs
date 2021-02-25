@@ -301,15 +301,15 @@ namespace DiscordIntegration_Plugin
 			}
 		}
 
-		public void OnBanning (BanningEventArgs ev)
-		{
-			if (ev.Target.Id.ToString().Contains(".")) return;
+		//public void OnBanning (BanningEventArgs ev)
+		//{
+		//	if (ev.Target.Id.ToString().Contains(".")) return;
 			
-			else
-            {
-				ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ev.Target.Nickname}` // || `{ev.Target.Id}` || \n**Czas:** `{TimeFormatter.TimeFormatter(ev.Duration)} - {new DateTime(banexpirationdate)}` \n**Powód:** `{ev.Reason}` \n**Administrator:** {ev.Issuer.Nickname}", HandleQueue.PunishmentsLogChannelId);
-			}
-		}
+		//	else
+  //          {
+		//		ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ev.Target.Nickname}` // || `{ev.Target.Id}` || \n**Czas:** `{TimeFormatter.TimeFormatter(ev.Duration)}` \n**Powód:** `{ev.Reason}` \n**Administrator:** {ev.Issuer.Nickname}", HandleQueue.PunishmentsLogChannelId);
+		//	}
+		//}
 
 		public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
 		{
