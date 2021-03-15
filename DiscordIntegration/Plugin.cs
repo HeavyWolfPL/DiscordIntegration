@@ -49,8 +49,9 @@ namespace DiscordIntegration_Plugin
             Handlers.Server.ReportingCheater += ServerEvents.OnCheaterReport;
 			
 			
-			Handlers.Player.Banning += PlayerEvents.OnBanning;
+			//Handlers.Player.Banning += PlayerEvents.OnBanning;
 			Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
+			Handlers.Player.Kicked += PlayerEvents.OnPlayerKicked;
 
 			Handlers.Scp914.ChangingKnobSetting += PlayerEvents.On914KnobChange;
             Handlers.Player.MedicalItemUsed += PlayerEvents.OnMedicalItem;
@@ -113,8 +114,9 @@ namespace DiscordIntegration_Plugin
             Handlers.Server.RespawningTeam -= ServerEvents.OnRespawn;
             Handlers.Server.ReportingCheater -= ServerEvents.OnCheaterReport;
 
-			Handlers.Player.Banning += PlayerEvents.OnBanning;
+			//Handlers.Player.Banning += PlayerEvents.OnBanning;
 			Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
+			Handlers.Player.Kicked += PlayerEvents.OnPlayerKicked;
 
 			Handlers.Scp914.ChangingKnobSetting -= PlayerEvents.On914KnobChange;
             Handlers.Player.UsingMedicalItem -= PlayerEvents.OnMedicalItem;

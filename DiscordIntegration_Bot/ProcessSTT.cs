@@ -84,6 +84,7 @@ namespace DiscordIntegration_Bot
 			Program.Log("STT: Listener started.");
 			ThreadPool.QueueUserWorkItem(ListenForConn, list);
 			new Thread(DequeueMessages).Start();
+			Program.Log($"{PunishmentsChannelId} PunishmentsID");
 		}
 
 		public static async Task Heartbeat(int port)
@@ -266,7 +267,7 @@ namespace DiscordIntegration_Bot
 					return;
 				}
 
-				if (chan.Id == Program.Config.GameLogChannelId || chan.Id == Program.Config.CommandLogChannelId || chan.Id == Program.Config.PunishmentsLogChannelId)
+				if (chan.Id == Program.Config.PunishmentsLogChannelId || chan.Id == Program.Config.CommandLogChannelId || chan.Id == Program.Config.GameLogChannelId)
 				{
 					Program.Log("Storing message.", true);
 					lock (_messages)
