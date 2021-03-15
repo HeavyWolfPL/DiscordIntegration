@@ -171,20 +171,27 @@ namespace DiscordIntegration_Plugin
 					}
 					else
 					{
-						if (ev.Attacker != null && ev.Target != ev.Attacker && ev.Target.Role.GetTeam() == ev.Attacker.Role.GetTeam() || ev.Attacker.Role.GetSide() == ev.Target.Role.GetSide())
+						if (ev.Attacker != null && ev.Target != ev.Attacker && )
 						{
-							ProcessSTT.SendData($":crossed_swords: **({ev.Attacker.Id}) {ev.Attacker.Nickname} - `{ev.Attacker.UserId}` ({ev.Attacker.Role}) {Plugin.Translation.Damaged} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.**", HandleQueue.GameLogChannelId);
+							//
 						}
-						else if (!Plugin.Singleton.Config.OnlyFriendlyFireDMG)
+						else
 						{
-							if (ev.Attacker != null && ev.Target != ev.Attacker && ev.Target.Role.GetTeam() == ev.Attacker.Role.GetTeam() || ev.Attacker.Role.GetSide() == ev.Target.Role.GetSide())
+							if (ev.Target.Role.GetTeam() == ev.Attacker.Role.GetTeam() || ev.Attacker.Role.GetSide() == ev.Target.Role.GetSide())
 							{
 								ProcessSTT.SendData($":crossed_swords: **({ev.Attacker.Id}) {ev.Attacker.Nickname} - `{ev.Attacker.UserId}` ({ev.Attacker.Role}) {Plugin.Translation.Damaged} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.**", HandleQueue.GameLogChannelId);
 							}
-							else
+							else if (!Plugin.Singleton.Config.OnlyFriendlyFireDMG)
 							{
-								//ProcessSTT.SendData($"{ev.HitInformations.Attacker}  {Plugin.Translation.Damaged} {ev.Target.Nickname} - {ev.Target.UserId} ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.", HandleQueue.GameLogChannelId);
-								ProcessSTT.SendData($"{ev.Attacker.Nickname} - `{ev.Attacker.UserId}` ({ev.Attacker.Role}) {Plugin.Translation.Damaged} {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.", HandleQueue.GameLogChannelId);
+								if (ev.Attacker != null && ev.Target != ev.Attacker && ev.Target.Role.GetTeam() == ev.Attacker.Role.GetTeam() || ev.Attacker.Role.GetSide() == ev.Target.Role.GetSide())
+								{
+									ProcessSTT.SendData($":crossed_swords: **({ev.Attacker.Id}) {ev.Attacker.Nickname} - `{ev.Attacker.UserId}` ({ev.Attacker.Role}) {Plugin.Translation.Damaged} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.**", HandleQueue.GameLogChannelId);
+								}
+								else
+								{
+									//ProcessSTT.SendData($"{ev.HitInformations.Attacker}  {Plugin.Translation.Damaged} {ev.Target.Nickname} - {ev.Target.UserId} ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.", HandleQueue.GameLogChannelId);
+									ProcessSTT.SendData($"{ev.Attacker.Nickname} - `{ev.Attacker.UserId}` ({ev.Attacker.Role}) {Plugin.Translation.Damaged} {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.", HandleQueue.GameLogChannelId);
+								}
 							}
 						}
 					}
@@ -297,21 +304,26 @@ namespace DiscordIntegration_Plugin
 			else
             {
 				ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-				//ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n**Czas:** `{ new DateTime(ev.Details.Expires)}` \n**Powód:** `{ ev.Details.Reason}` \n**Administrator:** { ev.Details.Issuer}", HandleQueue.PunishmentsLogChannelId);
+				ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n**Czas:** `{ new DateTime(ev.Details.Expires)}` \n**Powód:** `{ ev.Details.Reason}` \n**Administrator:** { ev.Details.Issuer}", HandleQueue.PunishmentsLogChannelId);
 			}
 		}
 
-		public void OnBanning (BanningEventArgs ev)
-		{
-			if (ev.Target.Id.ToString().Contains(".")) return;
-			
-			else
-            {
-				ProcessSTT.SendData($":no_entry: Nadano Now¹ Blokadê. \n**Gracz:** `{ev.Target.Nickname}` // || `{ev.Target.Id}` || \n**Czas:** `{TimeFormatter.TimeFormatter(ev.Duration)} - {new DateTime(banexpirationdate)}` \n**Powód:** `{ev.Reason}` \n**Administrator:** {ev.Issuer.Nickname}", HandleQueue.PunishmentsLogChannelId);
-			}
-		}
+        //public void OnBanning (BanningEventArgs ev)
+        //{
+        //	if (ev.Target.Id.ToString().Contains(".")) return;
 
-		public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
+        //	else
+        //          {
+        //		ProcessSTT.SendData($":no_entry: OnBanningEv - Nadano Now¹ Blokadê. \n**Gracz:** `{ev.Target.Nickname}` // || `{ev.Target.UserId}` || \n**Czas:** `{TimeFormatter.TimeFormatter(ev.Duration)}` \n**Powód:** `{ev.Reason}` \n**Administrator:** {ev.Issuer.Nickname}", HandleQueue.PunishmentsLogChannelId);
+        //	}
+        //}
+
+        public void OnPlayerKicked(KickedEventArgs ev)
+        {
+            ProcessSTT.SendData($":no_entry: Player Kicked \nNick: {ev.Target.Nickname}", HandleQueue.PunishmentsLogChannelId);
+        }
+
+        public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
 		{
 			if (Plugin.Singleton.Config.Intercom)
 				ProcessSTT.SendData($":loud_sound: ({ev.Player.Id}) {ev.Player.Nickname} - {ev.Player.UserId} ({ev.Player.Role}) {Plugin.Translation.HasStartedUsingTheIntercom}.", HandleQueue.GameLogChannelId);
