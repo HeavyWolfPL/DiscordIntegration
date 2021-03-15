@@ -171,11 +171,7 @@ namespace DiscordIntegration_Plugin
 					}
 					else
 					{
-						if (ev.Attacker != null && ev.Target != ev.Attacker && )
-						{
-							//
-						}
-						else
+						if (ev.Attacker != null && ev.Target != ev.Attacker)
 						{
 							if (ev.Target.Role.GetTeam() == ev.Attacker.Role.GetTeam() || ev.Attacker.Role.GetSide() == ev.Target.Role.GetSide())
 							{
@@ -193,6 +189,10 @@ namespace DiscordIntegration_Plugin
 									ProcessSTT.SendData($"{ev.Attacker.Nickname} - `{ev.Attacker.UserId}` ({ev.Attacker.Role}) {Plugin.Translation.Damaged} {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation._For} {ev.Amount} {Plugin.Translation.With} {DamageTypes.FromIndex(ev.Tool).name}.", HandleQueue.GameLogChannelId);
 								}
 							}
+						}
+						else
+						{
+							//
 						}
 					}
 				}
