@@ -27,28 +27,28 @@ namespace DiscordIntegration_Plugin
 					return;
 				}
 
-				//if (result.Data == "set gameid")
-				//{
-				//	GameLogChannelId = result.Channel;
-				//	Log.Debug($"STT: GameLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
-				//	return;
-				//}
+                if (result.Data == "set gameid")
+                {
+                    //GameLogChannelId = result.Channel;
+                    Log.Debug($"STT: GameLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
+                    return;
+                }
 
-				//if (result.Data == "set cmdid")
-				//{
-				//	CommandLogChannelId = result.Channel;
-				//	Log.Debug($"STT: CommandLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
-				//	return;
-				//}
+                if (result.Data == "set cmdid")
+                {
+                    //CommandLogChannelId = result.Channel;
+                    Log.Debug($"STT: CommandLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
+                    return;
+                }
 
-				//if (result.Data == "set bansid")
-				//{
-				//	PunishmentsLogChannelId = result.Channel;
-				//	Log.Debug($"STT: PunishmentsLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
-				//	return;
-				//}
+                if (result.Data == "set bansid")
+                {
+                    //PunishmentsLogChannelId = result.Channel;
+                    Log.Debug($"STT: PunishmentsLogChannelId changed: {result.Channel}", Plugin.Singleton.Config.Debug);
+                    return;
+                }
 
-				if (result.Data.StartsWith("setgroup"))
+                if (result.Data.StartsWith("setgroup"))
 				{
 					string[] args = result.Data.Split(' ');
 					Methods.SetSyncRole(args[2], args[1]);
