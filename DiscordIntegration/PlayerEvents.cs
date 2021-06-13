@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Exiled.API.Extensions;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs;
@@ -265,7 +266,7 @@ namespace DiscordIntegration_Plugin
 
 		public void OnPlayerVerified(VerifiedEventArgs ev)
 		{
-			if (Plugin.Singleton.Config.RoleSync)
+            if (Plugin.Singleton.Config.RoleSync)
 				Methods.CheckForSyncRole(ev.Player);
 			if (Plugin.Singleton.Config.PlayerJoin && ev.Player.Nickname != "Dedicated Server")
 				if (!ev.Player.ReferenceHub.serverRoles.DoNotTrack && plugin.Config.ShowIpAddresses)
