@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel;
 using Exiled.API.Interfaces;
 
@@ -71,6 +72,10 @@ namespace DiscordIntegration_Plugin
         
         [Description("Wether or not the plugin should try adn set player's roles when they join based on the Discord Bot's discord sync feature.")]
         public bool RoleSync { get; set; } = false;
+        public List<string> RoleSync2 { get; set; } = new List<string>()
+        {
+            "DiscordRoleID:IngameRoleName",
+        };
 
         [Description("Wether or not the plugin is enabled.")]
         public bool IsEnabled { get; set; } = true;
