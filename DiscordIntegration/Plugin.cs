@@ -48,10 +48,9 @@ namespace DiscordIntegration_Plugin
             Handlers.Server.RespawningTeam += ServerEvents.OnRespawn;
             Handlers.Server.ReportingCheater += ServerEvents.OnCheaterReport;
 			
-			
-			//Handlers.Player.Banning += PlayerEvents.OnBanning;
+
 			Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
-			Handlers.Player.Kicked += PlayerEvents.OnPlayerKicked;
+			Handlers.Player.Kicking += PlayerEvents.OnKicking;
 
 			Handlers.Scp914.ChangingKnobSetting += PlayerEvents.On914KnobChange;
             Handlers.Player.MedicalItemUsed += PlayerEvents.OnMedicalItem;
@@ -114,9 +113,9 @@ namespace DiscordIntegration_Plugin
             Handlers.Server.RespawningTeam -= ServerEvents.OnRespawn;
             Handlers.Server.ReportingCheater -= ServerEvents.OnCheaterReport;
 
-			//Handlers.Player.Banning += PlayerEvents.OnBanning;
+
 			Handlers.Player.Banned += PlayerEvents.OnPlayerBanned;
-			Handlers.Player.Kicked += PlayerEvents.OnPlayerKicked;
+			Handlers.Player.Kicking += PlayerEvents.OnKicking;
 
 			Handlers.Scp914.ChangingKnobSetting -= PlayerEvents.On914KnobChange;
             Handlers.Player.UsingMedicalItem -= PlayerEvents.OnMedicalItem;
@@ -287,6 +286,7 @@ namespace DiscordIntegration_Plugin
 		public string HasBeenFreedBy = "has been freed by";
 		public string HasBeenHandcuffedBy = "has been handcuffed by";
 		public string WasBannedBy = "was banned by";
+		public string WasKickedBy = "was kicked by";
 		public string HasStartedUsingTheIntercom = "has started using the intercom";
 		public string HasPickedUp = "has picked up";
 		public string HasDropped = "has dropped";
