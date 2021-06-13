@@ -30,6 +30,7 @@ namespace DiscordIntegration_Plugin
         public bool DropItem { get; set; } = false;
         public bool PickupItem { get; set; } = false;
         public bool Intercom { get; set; } = true;
+        public bool Kicked { get; set; } = true;
         public bool Banned { get; set; } = true;
         public bool Cuffed { get; set; } = true;
         public bool Freed { get; set; } = true;

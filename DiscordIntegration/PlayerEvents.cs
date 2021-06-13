@@ -293,23 +293,31 @@ namespace DiscordIntegration_Plugin
 
 		public void OnPlayerBanned(BannedEventArgs ev)
         {
-            if (ev.Details.Id.ToString().Contains("."))
-                if (!Plugin.Singleton.Config.ShowIpAddresses)
-                {
-					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `IP Hidden` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-                }
-                else
-                {
-					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-                }
-			else
-            {
-				ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-				if (ev.Details.Issuer != "Watyka?czyk")
+			if (Plugin.Singleton.Config.Banned)
+				if (ev.Details.Id.ToString().Contains("."))
+					if (!Plugin.Singleton.Config.ShowIpAddresses)
+					{
+						ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `IP Hidden` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+					}
+					else
+					{
+						ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+					}
+				else
 				{
-					ProcessSTT.SendData($"\n:no_entry: Nadano Now¹ Blokadê. \n\n:man_detective: **Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n:shield: **Czas:** `{ new DateTime(ev.Details.Expires)}` \n:information_source: **Powód:** `{ ev.Details.Reason}` \n:police_officer: **Administrator:** { ev.Details.Issuer} \n- - - - - - - - - - - - - - - -", HandleQueue.PunishmentsLogChannelId);
+					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
+					if (ev.Details.Issuer != "Watyka?czyk")
+					{
+						ProcessSTT.SendData($"\n:no_entry: Nadano Now¹ Blokadê. \n\n:man_detective: **Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n:shield: **Czas:** `{ new DateTime(ev.Details.Expires)}` \n:information_source: **Powód:** `{ ev.Details.Reason}` \n:police_officer: **Administrator:** { ev.Details.Issuer} \n- - - - - - - - - - - - - - - -", HandleQueue.PunishmentsLogChannelId);
+					}
 				}
-			}
+		}
+
+		public void OnKicking (KickingEventArgs ev)
+        {
+			if (Plugin.Singleton.Config.Kicked)
+				ProcessSTT.SendData($":stop_sign: {ev.Target.Nickname} - `{ev.Target.UserId}` {Plugin.Translation.WasKickedBy} {ev.Issuer.Nickname} {Plugin.Translation._For} {ev.Reason}.", HandleQueue.CommandLogChannelId);
+				ProcessSTT.SendData($"\n:stop_sign: Wyrzucono gracza. \n\n:man_detective: **Gracz:** `{ ev.Target.Nickname}` // || `{ev.Target.UserId}` || \n:information_source: **Powód:** `{ ev.Reason}` \n:police_officer: **Administrator:** { ev.Issuer.Nickname} \n- - - - - - - - - - - - - - - -", HandleQueue.PunishmentsLogChannelId);
 		}
 
         public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)
