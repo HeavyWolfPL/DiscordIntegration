@@ -40,10 +40,10 @@ To setup permission levels, simply enter the ID of the role you want to receive 
 ```json
 AllowedCommands: { 
   "list": 1,
-	"kick": 2,
-	"ban": 3,
-	"config": 4,
-	},
+  "kick": 2,
+  "ban": 3,
+  "config": 4,
+},
 ```
 
 ---
@@ -118,7 +118,7 @@ To disable logging for any particular event, simply change it's value to false, 
   only_friendly_fire: false
   # Only log friendly fire damage?
   only_friendly_fire_d_m_g: true
-  # Wether or not the plugin should try adn set player's roles when they join based on the Discord Bot's discord sync feature.
+  # Wether or not the plugin should try and set player's roles when they join based on the Discord Bot's discord sync feature.
   role_sync: false
   role_sync2:
   - DiscordRoleID:IngameRoleName
