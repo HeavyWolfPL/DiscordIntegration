@@ -232,7 +232,7 @@ namespace DiscordIntegration_Plugin
 				}
 				catch (Exception e)
 				{
-					Log.Error($"Player Hurt error: {e}");
+					Log.Error($"Player Hurt error: {e}"); //Don't ask why it's here
 				}
 			}
 		}
@@ -309,9 +309,9 @@ namespace DiscordIntegration_Plugin
 				else
 				{
 					ProcessSTT.SendData($":no_entry: {ev.Details.OriginalName} - `{ev.Details.Id}` {Plugin.Translation.WasBannedBy} {ev.Details.Issuer} {Plugin.Translation._For} {ev.Details.Reason}. {new DateTime(ev.Details.Expires)}", HandleQueue.CommandLogChannelId);
-					if (ev.Details.Issuer != "Watyka?czyk")
+					if (ev.Details.Issuer != "Watyka?czyk") //Ignore this pls im too lazy, unless you have someone named Watykanczyk
 					{
-						ProcessSTT.SendData($"\n:no_entry: Nadano Now¹ Blokadê. \n\n:man_detective: **Gracz:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n:shield: **Czas:** `{ new DateTime(ev.Details.Expires)}` \n:information_source: **Powód:** `{ ev.Details.Reason}` \n:police_officer: **Administrator:** { ev.Details.Issuer} \n- - - - - - - - - - - - - - - -", HandleQueue.PunishmentsLogChannelId);
+						ProcessSTT.SendData($"\n:no_entry: {Plugin.Translation.NewPunishment}. \n\n:man_detective: **{Plugin.Translation.Player}:** `{ ev.Details.OriginalName}` // || `{ev.Details.Id}` || \n:shield: **{Plugin.Translation.Expires}:** `{ new DateTime(ev.Details.Expires)}` \n:information_source: **{Plugin.Translation.Reason}:** `{ ev.Details.Reason}` \n:police_officer: **{Plugin.Translation.StaffMember}:** { ev.Details.Issuer} \n- - - - - - - - - - - - - - - -", HandleQueue.PunishmentsLogChannelId);
 					}
 				}
 		}
@@ -320,7 +320,7 @@ namespace DiscordIntegration_Plugin
         {
 			if (Plugin.Singleton.Config.Kicked)
 				ProcessSTT.SendData($":stop_sign: {ev.Target.Nickname} - `{ev.Target.UserId}` {Plugin.Translation.WasKickedBy} {ev.Issuer.Nickname} {Plugin.Translation._For} {ev.Reason}.", HandleQueue.CommandLogChannelId);
-				ProcessSTT.SendData($"\n:stop_sign: Wyrzucono gracza. \n\n:man_detective: **Gracz:** `{ ev.Target.Nickname}` // || `{ev.Target.UserId}` || \n:information_source: **Powód:** `{ ev.Reason}` \n:police_officer: **Administrator:** { ev.Issuer.Nickname} \n- - - - - - - - - - - - - - - -", HandleQueue.PunishmentsLogChannelId);
+				ProcessSTT.SendData($"\n:stop_sign: {Plugin.Translation.PlayerKicked}. \n\n:man_detective: **{Plugin.Translation.Player}:** `{ ev.Target.Nickname}` // || `{ev.Target.UserId}` || \n:information_source: **{Plugin.Translation.Reason}:** `{ ev.Reason}` \n:police_officer: **{Plugin.Translation.StaffMember}:** { ev.Issuer.Nickname} \n- - - - - - - - - - - - - - - -", HandleQueue.PunishmentsLogChannelId);
 		}
 
         public void OnIntercomSpeak(IntercomSpeakingEventArgs ev)

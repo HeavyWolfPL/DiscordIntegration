@@ -287,6 +287,7 @@ namespace DiscordIntegration_Plugin
 		public string HasBeenHandcuffedBy = "has been handcuffed by";
 		public string WasBannedBy = "was banned by";
 		public string WasKickedBy = "was kicked by";
+		public string PlayerKicked = "Player kicked";
 		public string HasStartedUsingTheIntercom = "has started using the intercom";
 		public string HasPickedUp = "has picked up";
 		public string HasDropped = "has dropped";
@@ -323,5 +324,10 @@ namespace DiscordIntegration_Plugin
 		public string Reloaded = "has reloaded their weapon";
 		public string GroupSet = "has been assigned a group";
 		public string ItemChanged = "changed the item in their hand";
+		public string NewPunishment = "New punishment";
+		public string Player = "Player";
+		public string Expires = "Expires";
+		public string StaffMember = "Staff Member";
+		public string Reason = "Reason";
 	}
 }
