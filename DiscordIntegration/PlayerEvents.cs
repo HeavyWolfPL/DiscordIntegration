@@ -210,20 +210,23 @@ namespace DiscordIntegration_Plugin
 			{
 				try
 				{
-					if (ev.Killer != null && ev.Target.Role.GetTeam() == ev.Killer.Role.GetTeam() || ev.Killer.Role.GetSide() == ev.Target.Role.GetSide())
+					if (ev.Killer != null && DamageTypes.FromIndex(ev.HitInformation.Tool).name != "WALL" && ev.Target.Role.GetTeam() == ev.Killer.Role.GetTeam() || ev.Killer.Role.GetSide() == ev.Target.Role.GetSide())
 						ProcessSTT.SendData($":o: **({ev.Killer.Id}) {ev.Killer.Nickname} - `{ev.Killer.UserId}` ({ev.Killer.Role}) {Plugin.Translation.Killed} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation.With} {DamageTypes.FromIndex(ev.HitInformation.Tool).name}.**",
 							HandleQueue.GameLogChannelId);
 					else if (!Plugin.Singleton.Config.OnlyFriendlyFire)
 					{
-						if (ev.Killer != null && ev.Killer != ev.Target && ev.Target.Role.GetTeam() == ev.Killer.Role.GetTeam() || ev.Killer.Role.GetSide() == ev.Target.Role.GetSide())
+						if (ev.Killer != null && DamageTypes.FromIndex(ev.HitInformation.Tool).name != "WALL")
 						{
-							ProcessSTT.SendData($":o: **({ev.Killer.Id}) {ev.Killer.Nickname} - `{ev.Killer.UserId}` ({ev.Killer.Role}) {Plugin.Translation.Killed} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation.With} {DamageTypes.FromIndex(ev.HitInformation.Tool).name}.**",
-								HandleQueue.GameLogChannelId);
-						}
-						else
-						{
-							ProcessSTT.SendData($":skull_crossbones: **({ev.Killer.Id}) {ev.Killer.Nickname} - `{ev.Killer.UserId}` ({ev.Killer.Role}) {Plugin.Translation.Killed} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation.With} {DamageTypes.FromIndex(ev.HitInformation.Tool).name}.**",
-								HandleQueue.GameLogChannelId);
+							if (ev.Killer != ev.Target && ev.Target.Role.GetTeam() == ev.Killer.Role.GetTeam() || ev.Killer.Role.GetSide() == ev.Target.Role.GetSide())
+							{
+								ProcessSTT.SendData($":o: **({ev.Killer.Id}) {ev.Killer.Nickname} - `{ev.Killer.UserId}` ({ev.Killer.Role}) {Plugin.Translation.Killed} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation.With} {DamageTypes.FromIndex(ev.HitInformation.Tool).name}.**",
+									HandleQueue.GameLogChannelId);
+							}
+							else
+							{
+								ProcessSTT.SendData($":skull_crossbones: **({ev.Killer.Id}) {ev.Killer.Nickname} - `{ev.Killer.UserId}` ({ev.Killer.Role}) {Plugin.Translation.Killed} ({ev.Target.Id}) {ev.Target.Nickname} - `{ev.Target.UserId}` ({ev.Target.Role}) {Plugin.Translation.With} {DamageTypes.FromIndex(ev.HitInformation.Tool).name}.**",
+									HandleQueue.GameLogChannelId);
+							}
 						}
 					}
 				}
