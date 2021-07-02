@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs;
 using Respawning;
@@ -58,19 +58,19 @@ namespace DiscordIntegration_Plugin
         public void OnRoundStart()
         {
             if (Plugin.Singleton.Config.RoundStart)
-                ProcessSTT.SendData($":arrow_forward: {Plugin.Translation.RoundStarting}: {Player.List.Count()} {Plugin.Translation.PlayersInRound}.", HandleQueue.GameLogChannelId);
+                ProcessSTT.SendData($"\n```ini\n ▶️ [{Plugin.Translation.RoundStarting}: {Player.List.Count()} {Plugin.Translation.PlayersInRound}]. ◀️```", HandleQueue.GameLogChannelId);
         }
 
         public void OnRoundEnd(RoundEndedEventArgs ev)
         {
             if (Plugin.Singleton.Config.RoundEnd)
-                ProcessSTT.SendData($":stop_button: {Plugin.Translation.RoundEnded}: {Player.List.Count()} {Plugin.Translation.PlayersOnline}.", HandleQueue.GameLogChannelId);
+                ProcessSTT.SendData($"\n ```ini\n⏹️ [{Plugin.Translation.RoundEnded}: {Player.List.Count()} {Plugin.Translation.PlayersOnline}]. ⏹️", HandleQueue.GameLogChannelId);
         }
 
         public void OnCheaterReport(ReportingCheaterEventArgs ev)
         {
             if (Plugin.Singleton.Config.CheaterReport)
-                ProcessSTT.SendData($":exclamation: :exclamation: :exclamation: :exclamation: :exclamation: \n**{Plugin.Translation.CheaterReportFiled}: {ev.Reporter.UserId} {Plugin.Translation.Reported} {ev.Reported.UserId} {Plugin.Translation._For} {ev.Reason}.** \n:exclamation: :exclamation: :exclamation: :exclamation: :exclamation: ", HandleQueue.GameLogChannelId);
+                ProcessSTT.SendData($"\n:exclamation: :exclamation: :exclamation: :exclamation: :exclamation: \n```ini\n[{Plugin.Translation.CheaterReportFiled}: {ev.Reporter.UserId} {Plugin.Translation.Reported} {ev.Reported.UserId} {Plugin.Translation._For} {ev.Reason}.]``` \n:exclamation: :exclamation: :exclamation: :exclamation: :exclamation: ", HandleQueue.GameLogChannelId);
         }
         
         public void OnConsoleCommand(SendingConsoleCommandEventArgs ev)
